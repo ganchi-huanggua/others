@@ -17,8 +17,10 @@ for i in range(start, end):
     predict = data[int(data.shape[0] / 2) :]
     acc = np.sum(ground_truth == predict) / ground_truth.shape[0]
     cm = confusion_matrix(ground_truth, predict)
+    plt.clf()
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
     plt.title("labelled ratio = 0.01, pred acc=" + str(acc)) 
     plt.xlabel('predicted')  
     plt.ylabel('ground_true')
     plt.show()
+    # plt.savefig("pic" + str(i) + '.png')
