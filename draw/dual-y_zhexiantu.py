@@ -39,9 +39,9 @@ ax2.grid(which="both", linestyle=":", linewidth=1, color='y', alpha=1)
 ax2.set_ylabel('1% labeled') 
 ax2.set_yticks(range(0, 101, 10))
 ax2.set_ylim([0, 100])
-ax2.plot(x, y4, 'r-o') 
-ax2.plot(x, y5, 'g-x')
-ax2.plot(x, y6, 'b-v')
+ax2.plot(x, y4, 'r-o', linestyle='-') 
+ax2.plot(x, y5, 'g-x', linestyle='-')
+ax2.plot(x, y6, 'b-v', linestyle='-')
     
 # 显示图例  
 ax.legend(bbox_to_anchor=(0.5, 0.25))  
