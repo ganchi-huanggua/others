@@ -1,0 +1,228 @@
+(lhz-torch-2.0) lhz@csgpu-SYS-4029GP-TRT:~/code/LAMDA-PILOT$ python main.py --config=./exps/l2p_pseudo_labeling.json
+2023-12-30 16:24:18,431 [trainer.py] => config: ./exps/l2p_pseudo_labeling.json
+2023-12-30 16:24:18,431 [trainer.py] => prefix:
+2023-12-30 16:24:18,431 [trainer.py] => dataset: cifar224
+2023-12-30 16:24:18,431 [trainer.py] => memory_size: 0
+2023-12-30 16:24:18,432 [trainer.py] => memory_per_class: 0
+2023-12-30 16:24:18,432 [trainer.py] => fixed_memory: False
+2023-12-30 16:24:18,432 [trainer.py] => shuffle: True
+2023-12-30 16:24:18,432 [trainer.py] => init_cls: 10
+2023-12-30 16:24:18,432 [trainer.py] => increment: 10
+2023-12-30 16:24:18,432 [trainer.py] => model_name: l2p_pseudolabeling
+2023-12-30 16:24:18,432 [trainer.py] => backbone_type: vit_base_patch16_224_l2p
+2023-12-30 16:24:18,432 [trainer.py] => get_original_backbone: True
+2023-12-30 16:24:18,432 [trainer.py] => device: [device(type='cuda', index=5)]
+2023-12-30 16:24:18,432 [trainer.py] => seed: 1993
+2023-12-30 16:24:18,432 [trainer.py] => tuned_epoch: 5
+2023-12-30 16:24:18,433 [trainer.py] => init_lr: 0.001875
+2023-12-30 16:24:18,433 [trainer.py] => batch_size: 16
+2023-12-30 16:24:18,433 [trainer.py] => weight_decay: 0
+2023-12-30 16:24:18,433 [trainer.py] => min_lr: 1e-05
+2023-12-30 16:24:18,433 [trainer.py] => optimizer: adam
+2023-12-30 16:24:18,433 [trainer.py] => scheduler: constant
+2023-12-30 16:24:18,433 [trainer.py] => reinit_optimizer: True
+2023-12-30 16:24:18,433 [trainer.py] => global_pool: token
+2023-12-30 16:24:18,433 [trainer.py] => head_type: prompt
+2023-12-30 16:24:18,433 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2023-12-30 16:24:18,433 [trainer.py] => pretrained: True
+2023-12-30 16:24:18,434 [trainer.py] => drop: 0.0
+2023-12-30 16:24:18,434 [trainer.py] => drop_path: 0.0
+2023-12-30 16:24:18,434 [trainer.py] => prompt_pool: True
+2023-12-30 16:24:18,434 [trainer.py] => pool_size: 10
+2023-12-30 16:24:18,434 [trainer.py] => length: 5
+2023-12-30 16:24:18,434 [trainer.py] => top_k: 5
+2023-12-30 16:24:18,434 [trainer.py] => initializer: uniform
+2023-12-30 16:24:18,434 [trainer.py] => prompt_key: True
+2023-12-30 16:24:18,434 [trainer.py] => prompt_key_init: uniform
+2023-12-30 16:24:18,434 [trainer.py] => use_prompt_mask: False
+2023-12-30 16:24:18,434 [trainer.py] => shared_prompt_pool: False
+2023-12-30 16:24:18,434 [trainer.py] => shared_prompt_key: False
+2023-12-30 16:24:18,435 [trainer.py] => batchwise_prompt: True
+2023-12-30 16:24:18,435 [trainer.py] => embedding_key: cls
+2023-12-30 16:24:18,435 [trainer.py] => predefined_key:
+2023-12-30 16:24:18,435 [trainer.py] => pull_constraint: True
+2023-12-30 16:24:18,435 [trainer.py] => pull_constraint_coeff: 0.1
+2023-12-30 16:24:18,435 [trainer.py] => semi_supervised_mode: True
+2023-12-30 16:24:18,435 [trainer.py] => labeled_ratio: 0.05
+2023-12-30 16:24:18,435 [trainer.py] => unlabeled_data_distribution_mode: previous_oot
+2023-12-30 16:24:18,435 [trainer.py] => confidence_threshold: 0.9
+Files already downloaded and verified
+Files already downloaded and verified
+2023-12-30 16:24:21,509 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-12-30 16:24:38,761 [vision_transformer_l2p.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-12-30 16:24:38,762 [vision_transformer_l2p.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-12-30 16:24:51,610 [l2p_pseudo_labeling.py] => 85,940,836 model total parameters.
+2023-12-30 16:24:51,611 [l2p_pseudo_labeling.py] => 122,980 model training parameters.
+2023-12-30 16:24:51,611 [l2p_pseudo_labeling.py] => prompt.prompt: 38400
+2023-12-30 16:24:51,611 [l2p_pseudo_labeling.py] => prompt.prompt_key: 7680
+2023-12-30 16:24:51,611 [l2p_pseudo_labeling.py] => head.weight: 76800
+2023-12-30 16:24:51,611 [l2p_pseudo_labeling.py] => head.bias: 100
+2023-12-30 16:24:51,612 [trainer.py] => All params: 171816392
+2023-12-30 16:24:51,613 [trainer.py] => Trainable params: 122980
+2023-12-30 16:24:51,614 [l2p_pseudo_labeling.py] => Learning on 0-10
+2023-12-30 16:24:51,626 [l2p_pseudo_labeling.py] => here are 2500 unlabeled samples in total
+2023-12-30 16:24:51,626 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:25:10,192 [l2p_pseudo_labeling.py] => It will add 1405 pseudo labelled samples
+2023-12-30 16:25:10,193 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:25:10,193 [toolkit.py] => Pseudo Accuracy: 0.9807829181494662
+Task 0, Epoch 5/5 => Loss 0.143, Train_accy 89.43, Test_accy 92.60: 100%|█████████████████████████████████████████████████████| 5/5 [01:32<00:00, 18.57s/it]2023-12-30 16:26:43,742 [l2p_pseudo_labeling.py] => Task 0, Epoch 5/5 => Loss 0.143, Train_accy 89.43, Test_accy 92.60
+2023-12-30 16:26:51,318 [trainer.py] => No NME accuracy.
+2023-12-30 16:26:51,319 [trainer.py] => CNN: {'total': 92.6, '00-09': 92.6, 'old': 0, 'new': 92.6}
+2023-12-30 16:26:51,319 [trainer.py] => CNN top1 curve: [92.6]
+2023-12-30 16:26:51,319 [trainer.py] => CNN top5 curve: [99.7]
+
+Average Accuracy (CNN): 92.6
+2023-12-30 16:26:51,319 [trainer.py] => Average Accuracy (CNN): 92.6
+
+2023-12-30 16:26:51,321 [trainer.py] => All params: 171816392
+2023-12-30 16:26:51,323 [trainer.py] => Trainable params: 122980
+2023-12-30 16:26:51,323 [l2p_pseudo_labeling.py] => Learning on 10-20
+2023-12-30 16:26:51,368 [l2p_pseudo_labeling.py] => here are 2750 unlabeled samples in total
+2023-12-30 16:26:51,374 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:27:10,328 [l2p_pseudo_labeling.py] => It will add 1274 pseudo labelled samples
+2023-12-30 16:27:10,328 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:27:10,329 [toolkit.py] => Pseudo Accuracy: 0.9552590266875981
+Task 1, Epoch 5/5 => Loss 0.068, Train_accy 87.80, Test_accy 85.30: 100%|█████████████████████████████████████████████████████| 5/5 [01:33<00:00, 18.68s/it]2023-12-30 16:28:43,742 [l2p_pseudo_labeling.py] => Task 1, Epoch 5/5 => Loss 0.068, Train_accy 87.80, Test_accy 85.30
+2023-12-30 16:28:57,197 [trainer.py] => No NME accuracy.
+2023-12-30 16:28:57,198 [trainer.py] => CNN: {'total': 85.3, '00-09': 91.4, '10-19': 79.2, 'old': 91.4, 'new': 79.2}
+2023-12-30 16:28:57,198 [trainer.py] => CNN top1 curve: [92.6, 85.3]
+2023-12-30 16:28:57,198 [trainer.py] => CNN top5 curve: [99.7, 98.65]
+
+Average Accuracy (CNN): 88.94999999999999
+2023-12-30 16:28:57,198 [trainer.py] => Average Accuracy (CNN): 88.94999999999999
+
+2023-12-30 16:28:57,200 [trainer.py] => All params: 171816392
+2023-12-30 16:28:57,202 [trainer.py] => Trainable params: 122980
+2023-12-30 16:28:57,202 [l2p_pseudo_labeling.py] => Learning on 20-30
+2023-12-30 16:28:57,265 [l2p_pseudo_labeling.py] => here are 3000 unlabeled samples in total
+2023-12-30 16:28:57,265 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:29:16,977 [l2p_pseudo_labeling.py] => It will add 1626 pseudo labelled samples
+2023-12-30 16:29:16,977 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:29:16,977 [toolkit.py] => Pseudo Accuracy: 0.9428044280442804
+Task 2, Epoch 5/5 => Loss -0.092, Train_accy 92.59, Test_accy 82.13: 100%|████████████████████████████████████████████████████| 5/5 [01:55<00:00, 23.01s/it]2023-12-30 16:31:12,017 [l2p_pseudo_labeling.py] => Task 2, Epoch 5/5 => Loss -0.092, Train_accy 92.59, Test_accy 82.13
+2023-12-30 16:31:32,591 [trainer.py] => No NME accuracy.
+2023-12-30 16:31:32,591 [trainer.py] => CNN: {'total': 82.13, '00-09': 89.5, '10-19': 75.9, '20-29': 81.0, 'old': 82.7, 'new': 81.0}
+2023-12-30 16:31:32,591 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13]
+2023-12-30 16:31:32,591 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8]
+
+Average Accuracy (CNN): 86.67666666666666
+2023-12-30 16:31:32,592 [trainer.py] => Average Accuracy (CNN): 86.67666666666666
+
+2023-12-30 16:31:32,593 [trainer.py] => All params: 171816392
+2023-12-30 16:31:32,594 [trainer.py] => Trainable params: 122980
+2023-12-30 16:31:32,594 [l2p_pseudo_labeling.py] => Learning on 30-40
+2023-12-30 16:31:32,635 [l2p_pseudo_labeling.py] => here are 3250 unlabeled samples in total
+2023-12-30 16:31:32,635 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:31:53,144 [l2p_pseudo_labeling.py] => It will add 1450 pseudo labelled samples
+2023-12-30 16:31:53,145 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:31:53,145 [toolkit.py] => Pseudo Accuracy: 0.9158620689655173
+Task 3, Epoch 5/5 => Loss -0.052, Train_accy 91.88, Test_accy 77.82: 100%|████████████████████████████████████████████████████| 5/5 [01:53<00:00, 22.75s/it]2023-12-30 16:33:46,903 [l2p_pseudo_labeling.py] => Task 3, Epoch 5/5 => Loss -0.052, Train_accy 91.88, Test_accy 77.82
+2023-12-30 16:34:13,938 [trainer.py] => No NME accuracy.
+2023-12-30 16:34:13,938 [trainer.py] => CNN: {'total': 77.82, '00-09': 75.9, '10-19': 73.8, '20-29': 81.9, '30-39': 79.7, 'old': 77.2, 'new': 79.7}
+2023-12-30 16:34:13,939 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82]
+2023-12-30 16:34:13,939 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05]
+
+Average Accuracy (CNN): 84.46249999999999
+2023-12-30 16:34:13,939 [trainer.py] => Average Accuracy (CNN): 84.46249999999999
+
+2023-12-30 16:34:13,940 [trainer.py] => All params: 171816392
+2023-12-30 16:34:13,941 [trainer.py] => Trainable params: 122980
+2023-12-30 16:34:13,941 [l2p_pseudo_labeling.py] => Learning on 40-50
+2023-12-30 16:34:14,006 [l2p_pseudo_labeling.py] => here are 3500 unlabeled samples in total
+2023-12-30 16:34:14,006 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:34:35,341 [l2p_pseudo_labeling.py] => It will add 1730 pseudo labelled samples
+2023-12-30 16:34:35,341 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:34:35,342 [toolkit.py] => Pseudo Accuracy: 0.9109826589595376
+Task 4, Epoch 5/5 => Loss -0.138, Train_accy 94.49, Test_accy 76.56: 100%|████████████████████████████████████████████████████| 5/5 [02:14<00:00, 26.96s/it]2023-12-30 16:36:50,137 [l2p_pseudo_labeling.py] => Task 4, Epoch 5/5 => Loss -0.138, Train_accy 94.49, Test_accy 76.56
+2023-12-30 16:37:22,841 [trainer.py] => No NME accuracy.
+2023-12-30 16:37:22,842 [trainer.py] => CNN: {'total': 76.56, '00-09': 71.8, '10-19': 72.4, '20-29': 81.4, '30-39': 77.2, '40-49': 80.0, 'old': 75.7, 'new': 80.0}
+2023-12-30 16:37:22,842 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56]
+2023-12-30 16:37:22,842 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88]
+
+Average Accuracy (CNN): 82.88199999999999
+2023-12-30 16:37:22,842 [trainer.py] => Average Accuracy (CNN): 82.88199999999999
+
+2023-12-30 16:37:22,844 [trainer.py] => All params: 171816392
+2023-12-30 16:37:22,849 [trainer.py] => Trainable params: 122980
+2023-12-30 16:37:22,849 [l2p_pseudo_labeling.py] => Learning on 50-60
+2023-12-30 16:37:22,908 [l2p_pseudo_labeling.py] => here are 3750 unlabeled samples in total
+2023-12-30 16:37:22,908 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:37:44,456 [l2p_pseudo_labeling.py] => It will add 1459 pseudo labelled samples
+2023-12-30 16:37:44,456 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:37:44,456 [toolkit.py] => Pseudo Accuracy: 0.8807402330363262
+Task 5, Epoch 5/5 => Loss -0.061, Train_accy 92.16, Test_accy 75.33: 100%|████████████████████████████████████████████████████| 5/5 [02:07<00:00, 25.49s/it]2023-12-30 16:39:51,929 [l2p_pseudo_labeling.py] => Task 5, Epoch 5/5 => Loss -0.061, Train_accy 92.16, Test_accy 75.33
+2023-12-30 16:40:31,266 [trainer.py] => No NME accuracy.
+2023-12-30 16:40:31,267 [trainer.py] => CNN: {'total': 75.33, '00-09': 70.9, '10-19': 72.5, '20-29': 76.7, '30-39': 72.1, '40-49': 78.6, '50-59': 81.2, 'old': 74.16, 'new': 81.2}
+2023-12-30 16:40:31,267 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56, 75.33]
+2023-12-30 16:40:31,267 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88, 95.12]
+
+Average Accuracy (CNN): 81.62333333333332
+2023-12-30 16:40:31,268 [trainer.py] => Average Accuracy (CNN): 81.62333333333332
+
+2023-12-30 16:40:31,270 [trainer.py] => All params: 171816392
+2023-12-30 16:40:31,272 [trainer.py] => Trainable params: 122980
+2023-12-30 16:40:31,272 [l2p_pseudo_labeling.py] => Learning on 60-70
+2023-12-30 16:40:31,370 [l2p_pseudo_labeling.py] => here are 4000 unlabeled samples in total
+2023-12-30 16:40:31,370 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:40:54,983 [l2p_pseudo_labeling.py] => It will add 1917 pseudo labelled samples
+2023-12-30 16:40:54,983 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:40:54,983 [toolkit.py] => Pseudo Accuracy: 0.892018779342723
+Task 6, Epoch 5/5 => Loss -0.098, Train_accy 92.39, Test_accy 75.16: 100%|████████████████████████████████████████████████████| 5/5 [02:35<00:00, 31.14s/it]2023-12-30 16:43:30,680 [l2p_pseudo_labeling.py] => Task 6, Epoch 5/5 => Loss -0.098, Train_accy 92.39, Test_accy 75.16
+2023-12-30 16:44:16,695 [trainer.py] => No NME accuracy.
+2023-12-30 16:44:16,695 [trainer.py] => CNN: {'total': 75.16, '00-09': 67.2, '10-19': 68.5, '20-29': 75.3, '30-39': 71.7, '40-49': 78.9, '50-59': 79.7, '60-69': 84.8, 'old': 73.55, 'new': 84.8}
+2023-12-30 16:44:16,695 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56, 75.33, 75.16]
+2023-12-30 16:44:16,695 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88, 95.12, 95.01]
+
+Average Accuracy (CNN): 80.7
+2023-12-30 16:44:16,695 [trainer.py] => Average Accuracy (CNN): 80.7
+
+2023-12-30 16:44:16,697 [trainer.py] => All params: 171816392
+2023-12-30 16:44:16,698 [trainer.py] => Trainable params: 122980
+2023-12-30 16:44:16,698 [l2p_pseudo_labeling.py] => Learning on 70-80
+2023-12-30 16:44:16,767 [l2p_pseudo_labeling.py] => here are 4250 unlabeled samples in total
+2023-12-30 16:44:16,767 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:44:40,876 [l2p_pseudo_labeling.py] => It will add 1567 pseudo labelled samples
+2023-12-30 16:44:40,877 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:44:40,878 [toolkit.py] => Pseudo Accuracy: 0.8059987236758137
+Task 7, Epoch 5/5 => Loss -0.082, Train_accy 92.46, Test_accy 72.75: 100%|████████████████████████████████████████████████████| 5/5 [02:26<00:00, 29.36s/it]2023-12-30 16:47:07,717 [l2p_pseudo_labeling.py] => Task 7, Epoch 5/5 => Loss -0.082, Train_accy 92.46, Test_accy 72.75
+2023-12-30 16:48:00,311 [trainer.py] => No NME accuracy.
+2023-12-30 16:48:00,311 [trainer.py] => CNN: {'total': 72.75, '00-09': 66.3, '10-19': 65.8, '20-29': 73.9, '30-39': 71.4, '40-49': 78.6, '50-59': 75.1, '60-69': 81.8, '70-79': 69.1, 'old': 73.27, 'new': 69.1}
+2023-12-30 16:48:00,311 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56, 75.33, 75.16, 72.75]
+2023-12-30 16:48:00,311 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88, 95.12, 95.01, 94.39]
+
+Average Accuracy (CNN): 79.70625
+2023-12-30 16:48:00,311 [trainer.py] => Average Accuracy (CNN): 79.70625
+
+2023-12-30 16:48:00,313 [trainer.py] => All params: 171816392
+2023-12-30 16:48:00,315 [trainer.py] => Trainable params: 122980
+2023-12-30 16:48:00,315 [l2p_pseudo_labeling.py] => Learning on 80-90
+2023-12-30 16:48:00,405 [l2p_pseudo_labeling.py] => here are 4500 unlabeled samples in total
+2023-12-30 16:48:00,409 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:48:25,514 [l2p_pseudo_labeling.py] => It will add 1879 pseudo labelled samples
+2023-12-30 16:48:25,515 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:48:25,515 [toolkit.py] => Pseudo Accuracy: 0.8014901543374136
+Task 8, Epoch 5/5 => Loss -0.101, Train_accy 92.44, Test_accy 70.42: 100%|████████████████████████████████████████████████████| 5/5 [02:47<00:00, 33.43s/it]2023-12-30 16:51:12,688 [l2p_pseudo_labeling.py] => Task 8, Epoch 5/5 => Loss -0.101, Train_accy 92.44, Test_accy 70.42
+2023-12-30 16:52:11,489 [trainer.py] => No NME accuracy.
+2023-12-30 16:52:11,489 [trainer.py] => CNN: {'total': 70.42, '00-09': 63.4, '10-19': 61.5, '20-29': 69.9, '30-39': 70.6, '40-49': 75.3, '50-59': 75.6, '60-69': 73.3, '70-79': 65.1, '80-89': 79.1, 'old': 69.34, 'new': 79.1}
+2023-12-30 16:52:11,490 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56, 75.33, 75.16, 72.75, 70.42]
+2023-12-30 16:52:11,490 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88, 95.12, 95.01, 94.39, 93.62]
+
+Average Accuracy (CNN): 78.67444444444443
+2023-12-30 16:52:11,490 [trainer.py] => Average Accuracy (CNN): 78.67444444444443
+
+2023-12-30 16:52:11,492 [trainer.py] => All params: 171816392
+2023-12-30 16:52:11,494 [trainer.py] => Trainable params: 122980
+2023-12-30 16:52:11,494 [l2p_pseudo_labeling.py] => Learning on 90-100
+2023-12-30 16:52:11,580 [l2p_pseudo_labeling.py] => here are 4750 unlabeled samples in total
+2023-12-30 16:52:11,580 [l2p_pseudo_labeling.py] => start pseudo labeling...
+2023-12-30 16:52:36,546 [l2p_pseudo_labeling.py] => It will add 1834 pseudo labelled samples
+2023-12-30 16:52:36,546 [l2p_pseudo_labeling.py] => pseudo labeling finished
+2023-12-30 16:52:36,547 [toolkit.py] => Pseudo Accuracy: 0.816793893129771
+Task 9, Epoch 5/5 => Loss -0.075, Train_accy 91.60, Test_accy 68.33: 100%|████████████████████████████████████████████████████| 5/5 [02:51<00:00, 34.21s/it]2023-12-30 16:55:27,593 [l2p_pseudo_labeling.py] => Task 9, Epoch 5/5 => Loss -0.075, Train_accy 91.60, Test_accy 68.33
+2023-12-30 16:56:33,294 [trainer.py] => No NME accuracy.
+2023-12-30 16:56:33,294 [trainer.py] => CNN: {'total': 68.33, '00-09': 55.6, '10-19': 58.7, '20-29': 66.2, '30-39': 67.8, '40-49': 73.8, '50-59': 75.2, '60-69': 72.5, '70-79': 65.8, '80-89': 76.7, '90-99': 71.0, 'old': 68.03, 'new': 71.0}
+2023-12-30 16:56:33,294 [trainer.py] => CNN top1 curve: [92.6, 85.3, 82.13, 77.82, 76.56, 75.33, 75.16, 72.75, 70.42, 68.33]
+2023-12-30 16:56:33,294 [trainer.py] => CNN top5 curve: [99.7, 98.65, 97.8, 96.05, 95.88, 95.12, 95.01, 94.39, 93.62, 92.91]
+
+Average Accuracy (CNN): 77.64
+2023-12-30 16:56:33,294 [trainer.py] => Average Accuracy (CNN): 77.64
