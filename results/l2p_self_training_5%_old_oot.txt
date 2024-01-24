@@ -1161,3 +1161,388 @@ Task 3, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.035, Train_accy 91.13, 
 
 Average Accuracy (CNN): 50.86749999999999
 2024-01-18 10:39:11,851 [trainer.py] => Average Accuracy (CNN): 50.86749999999999
+
+
+######################################################################################
+======================================================================================
+######################################################################################
+
+(base) root@autodl-container-56644e8033-177721e5:~/autodl-tmp/LAMDA-PILOT# python main.py --config=./exps/l2p_self_training.json
+2024-01-24 17:14:07,657 [trainer.py] => config: ./exps/l2p_self_training.json
+2024-01-24 17:14:07,657 [trainer.py] => prefix:  
+2024-01-24 17:14:07,657 [trainer.py] => dataset: cifar224
+2024-01-24 17:14:07,657 [trainer.py] => memory_size: 0
+2024-01-24 17:14:07,657 [trainer.py] => memory_per_class: 0
+2024-01-24 17:14:07,657 [trainer.py] => fixed_memory: False
+2024-01-24 17:14:07,657 [trainer.py] => shuffle: True
+2024-01-24 17:14:07,657 [trainer.py] => init_cls: 10
+2024-01-24 17:14:07,657 [trainer.py] => increment: 10
+2024-01-24 17:14:07,657 [trainer.py] => model_name: l2p_self_training
+2024-01-24 17:14:07,657 [trainer.py] => backbone_type: vit_base_patch16_224_l2p
+2024-01-24 17:14:07,657 [trainer.py] => get_original_backbone: True
+2024-01-24 17:14:07,657 [trainer.py] => device: [device(type='cuda', index=0)]
+2024-01-24 17:14:07,657 [trainer.py] => seed: 1993
+2024-01-24 17:14:07,657 [trainer.py] => tuned_epoch: 5
+2024-01-24 17:14:07,657 [trainer.py] => init_lr: 0.001875
+2024-01-24 17:14:07,657 [trainer.py] => batch_size: 16
+2024-01-24 17:14:07,657 [trainer.py] => weight_decay: 0
+2024-01-24 17:14:07,657 [trainer.py] => min_lr: 1e-05
+2024-01-24 17:14:07,657 [trainer.py] => optimizer: adam
+2024-01-24 17:14:07,657 [trainer.py] => scheduler: constant
+2024-01-24 17:14:07,658 [trainer.py] => reinit_optimizer: True
+2024-01-24 17:14:07,658 [trainer.py] => global_pool: token
+2024-01-24 17:14:07,658 [trainer.py] => head_type: prompt
+2024-01-24 17:14:07,658 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2024-01-24 17:14:07,658 [trainer.py] => pretrained: True
+2024-01-24 17:14:07,658 [trainer.py] => drop: 0.0
+2024-01-24 17:14:07,658 [trainer.py] => drop_path: 0.0
+2024-01-24 17:14:07,658 [trainer.py] => prompt_pool: True
+2024-01-24 17:14:07,658 [trainer.py] => pool_size: 10
+2024-01-24 17:14:07,658 [trainer.py] => length: 5
+2024-01-24 17:14:07,658 [trainer.py] => top_k: 5
+2024-01-24 17:14:07,658 [trainer.py] => initializer: uniform
+2024-01-24 17:14:07,658 [trainer.py] => prompt_key: True
+2024-01-24 17:14:07,658 [trainer.py] => prompt_key_init: uniform
+2024-01-24 17:14:07,658 [trainer.py] => use_prompt_mask: False
+2024-01-24 17:14:07,658 [trainer.py] => shared_prompt_pool: False
+2024-01-24 17:14:07,658 [trainer.py] => shared_prompt_key: False
+2024-01-24 17:14:07,658 [trainer.py] => batchwise_prompt: True
+2024-01-24 17:14:07,658 [trainer.py] => embedding_key: cls
+2024-01-24 17:14:07,658 [trainer.py] => predefined_key: 
+2024-01-24 17:14:07,658 [trainer.py] => pull_constraint: True
+2024-01-24 17:14:07,658 [trainer.py] => pull_constraint_coeff: 0.1
+2024-01-24 17:14:07,658 [trainer.py] => semi_supervised_mode: True
+2024-01-24 17:14:07,658 [trainer.py] => labeled_ratio: 0.05
+2024-01-24 17:14:07,658 [trainer.py] => unlabeled_data_distribution_mode: previous_oot
+2024-01-24 17:14:07,658 [trainer.py] => confidence_threshold: 0.9
+2024-01-24 17:14:07,658 [trainer.py] => max_self_training_iteration: 3
+Files already downloaded and verified
+Files already downloaded and verified
+2024-01-24 17:14:09,211 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2024-01-24 17:14:10,767 [vision_transformer_l2p.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2024-01-24 17:14:10,768 [vision_transformer_l2p.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2024-01-24 17:14:13,139 [l2p_self_training.py] => 85,940,836 model total parameters.
+2024-01-24 17:14:13,139 [l2p_self_training.py] => 122,980 model training parameters.
+2024-01-24 17:14:13,139 [l2p_self_training.py] => prompt.prompt: 38400
+2024-01-24 17:14:13,139 [l2p_self_training.py] => prompt.prompt_key: 7680
+2024-01-24 17:14:13,140 [l2p_self_training.py] => head.weight: 76800
+2024-01-24 17:14:13,140 [l2p_self_training.py] => head.bias: 100
+2024-01-24 17:14:13,141 [trainer.py] => All params: 171816392
+2024-01-24 17:14:13,142 [trainer.py] => Trainable params: 122980
+2024-01-24 17:14:13,142 [l2p_self_training.py] => Learning on 0-10
+2024-01-24 17:14:13,448 [l2p_self_training.py] => train dataset length: 250
+Task 0, Epoch 5/5, Self_training_Iteration: 0 => Loss 0.515, Train_accy 84.00, Test_accy 89.50: 100%|████████████████████████████████████████████████████████████████████| 5/5 [00:11<00:00,  2.32s/it]
+2024-01-24 17:14:25,061 [l2p_self_training.py] => Task 0, Epoch 5/5, Self_training_Iteration: 0 => Loss 0.515, Train_accy 84.00, Test_accy 89.50
+2024-01-24 17:14:25,068 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:14:33,170 [l2p_self_training.py] => 1038 unlabeled samples will be pseudo labeled
+2024-01-24 17:14:33,170 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:14:33,171 [toolkit.py] => Pseudo Accuracy: 0.9788053949903661
+2024-01-24 17:14:33,176 [l2p_self_training.py] => train dataset length: 1288
+Task 0, Epoch 5/5, Self_training_Iteration: 1 => Loss 0.137, Train_accy 90.99, Test_accy 92.70: 100%|████████████████████████████████████████████████████████████████████| 5/5 [00:36<00:00,  7.31s/it]
+2024-01-24 17:15:09,720 [l2p_self_training.py] => Task 0, Epoch 5/5, Self_training_Iteration: 1 => Loss 0.137, Train_accy 90.99, Test_accy 92.70
+2024-01-24 17:15:09,727 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:15:17,619 [l2p_self_training.py] => 1668 unlabeled samples will be pseudo labeled
+2024-01-24 17:15:17,620 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:15:17,620 [toolkit.py] => Pseudo Accuracy: 0.9508393285371702
+2024-01-24 17:15:17,629 [l2p_self_training.py] => train dataset length: 1918
+Task 0, Epoch 5/5, Self_training_Iteration: 2 => Loss 0.061, Train_accy 88.74, Test_accy 90.70: 100%|████████████████████████████████████████████████████████████████████| 5/5 [00:50<00:00, 10.05s/it]
+2024-01-24 17:16:07,861 [l2p_self_training.py] => Task 0, Epoch 5/5, Self_training_Iteration: 2 => Loss 0.061, Train_accy 88.74, Test_accy 90.70
+2024-01-24 17:16:07,868 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:16:15,798 [l2p_self_training.py] => 1679 unlabeled samples will be pseudo labeled
+2024-01-24 17:16:15,799 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:16:15,799 [toolkit.py] => Pseudo Accuracy: 0.9535437760571769
+2024-01-24 17:16:19,293 [trainer.py] => No NME accuracy.
+2024-01-24 17:16:19,294 [trainer.py] => CNN: {'total': 90.7, '00-09': 90.7, 'old': 0, 'new': 90.7}
+2024-01-24 17:16:19,294 [trainer.py] => CNN top1 curve: [90.7]
+2024-01-24 17:16:19,294 [trainer.py] => CNN top5 curve: [99.2]
+
+Average Accuracy (CNN): 90.7
+2024-01-24 17:16:19,294 [trainer.py] => Average Accuracy (CNN): 90.7 
+
+2024-01-24 17:16:19,299 [trainer.py] => All params: 171816392
+2024-01-24 17:16:19,302 [trainer.py] => Trainable params: 122980
+2024-01-24 17:16:19,302 [l2p_self_training.py] => Learning on 10-20
+2024-01-24 17:16:19,344 [l2p_self_training.py] => train dataset length: 250
+Task 1, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.008, Train_accy 90.80, Test_accy 80.30: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:15<00:00,  3.10s/it]
+2024-01-24 17:16:34,852 [l2p_self_training.py] => Task 1, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.008, Train_accy 90.80, Test_accy 80.30
+2024-01-24 17:16:34,858 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:16:43,802 [l2p_self_training.py] => 1567 unlabeled samples will be pseudo labeled
+2024-01-24 17:16:43,802 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:16:43,802 [toolkit.py] => Pseudo Accuracy: 0.9578813018506701
+2024-01-24 17:16:43,805 [l2p_self_training.py] => train dataset length: 1817
+Task 1, Epoch 5/5, Self_training_Iteration: 1 => Loss 0.051, Train_accy 88.99, Test_accy 86.45: 100%|████████████████████████████████████████████████████████████████████| 5/5 [00:51<00:00, 10.38s/it]
+2024-01-24 17:17:35,705 [l2p_self_training.py] => Task 1, Epoch 5/5, Self_training_Iteration: 1 => Loss 0.051, Train_accy 88.99, Test_accy 86.45
+2024-01-24 17:17:35,712 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:17:44,610 [l2p_self_training.py] => 1843 unlabeled samples will be pseudo labeled
+2024-01-24 17:17:44,611 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:17:44,611 [toolkit.py] => Pseudo Accuracy: 0.9289202387411829
+2024-01-24 17:17:44,617 [l2p_self_training.py] => train dataset length: 2093
+Task 1, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.008, Train_accy 89.73, Test_accy 79.45: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:58<00:00, 11.66s/it]
+2024-01-24 17:18:42,895 [l2p_self_training.py] => Task 1, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.008, Train_accy 89.73, Test_accy 79.45
+2024-01-24 17:18:42,900 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:18:51,740 [l2p_self_training.py] => 1978 unlabeled samples will be pseudo labeled
+2024-01-24 17:18:51,740 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:18:51,740 [toolkit.py] => Pseudo Accuracy: 0.89737108190091
+2024-01-24 17:18:58,456 [trainer.py] => No NME accuracy.
+2024-01-24 17:18:58,456 [trainer.py] => CNN: {'total': 79.45, '00-09': 69.0, '10-19': 89.9, 'old': 69.0, 'new': 89.9}
+2024-01-24 17:18:58,456 [trainer.py] => CNN top1 curve: [90.7, 79.45]
+2024-01-24 17:18:58,457 [trainer.py] => CNN top5 curve: [99.2, 97.95]
+
+Average Accuracy (CNN): 85.075
+2024-01-24 17:18:58,457 [trainer.py] => Average Accuracy (CNN): 85.075 
+
+2024-01-24 17:18:58,462 [trainer.py] => All params: 171816392
+2024-01-24 17:18:58,465 [trainer.py] => Trainable params: 122980
+2024-01-24 17:18:58,465 [l2p_self_training.py] => Learning on 20-30
+2024-01-24 17:18:58,505 [l2p_self_training.py] => train dataset length: 250
+Task 2, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.118, Train_accy 93.20, Test_accy 71.40: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:18<00:00,  3.71s/it]
+2024-01-24 17:19:17,037 [l2p_self_training.py] => Task 2, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.118, Train_accy 93.20, Test_accy 71.40
+2024-01-24 17:19:17,044 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:19:26,691 [l2p_self_training.py] => 1936 unlabeled samples will be pseudo labeled
+2024-01-24 17:19:26,693 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:19:26,694 [toolkit.py] => Pseudo Accuracy: 0.952995867768595
+2024-01-24 17:19:26,705 [l2p_self_training.py] => train dataset length: 2186
+Task 2, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.090, Train_accy 93.37, Test_accy 80.53: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:02<00:00, 12.51s/it]
+2024-01-24 17:20:29,264 [l2p_self_training.py] => Task 2, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.090, Train_accy 93.37, Test_accy 80.53
+2024-01-24 17:20:29,271 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:20:38,733 [l2p_self_training.py] => 2281 unlabeled samples will be pseudo labeled
+2024-01-24 17:20:38,734 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:20:38,734 [toolkit.py] => Pseudo Accuracy: 0.8991670320035072
+2024-01-24 17:20:38,752 [l2p_self_training.py] => train dataset length: 2531
+Task 2, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.080, Train_accy 92.45, Test_accy 76.67: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:10<00:00, 14.16s/it]
+2024-01-24 17:21:49,555 [l2p_self_training.py] => Task 2, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.080, Train_accy 92.45, Test_accy 76.67
+2024-01-24 17:21:49,562 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:21:59,072 [l2p_self_training.py] => 2319 unlabeled samples will be pseudo labeled
+2024-01-24 17:21:59,073 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:21:59,073 [toolkit.py] => Pseudo Accuracy: 0.8831392841742131
+2024-01-24 17:22:08,634 [trainer.py] => No NME accuracy.
+2024-01-24 17:22:08,635 [trainer.py] => CNN: {'total': 76.67, '00-09': 58.3, '10-19': 82.8, '20-29': 88.9, 'old': 70.55, 'new': 88.9}
+2024-01-24 17:22:08,635 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67]
+2024-01-24 17:22:08,635 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53]
+
+Average Accuracy (CNN): 82.27333333333333
+2024-01-24 17:22:08,635 [trainer.py] => Average Accuracy (CNN): 82.27333333333333 
+
+2024-01-24 17:22:08,640 [trainer.py] => All params: 171816392
+2024-01-24 17:22:08,643 [trainer.py] => Trainable params: 122980
+2024-01-24 17:22:08,643 [l2p_self_training.py] => Learning on 30-40
+2024-01-24 17:22:08,688 [l2p_self_training.py] => train dataset length: 250
+Task 3, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.101, Train_accy 94.00, Test_accy 70.75: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:21<00:00,  4.27s/it]
+2024-01-24 17:22:30,038 [l2p_self_training.py] => Task 3, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.101, Train_accy 94.00, Test_accy 70.75
+2024-01-24 17:22:30,044 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:22:40,276 [l2p_self_training.py] => 1885 unlabeled samples will be pseudo labeled
+2024-01-24 17:22:40,276 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:22:40,277 [toolkit.py] => Pseudo Accuracy: 0.9013262599469496
+2024-01-24 17:22:40,284 [l2p_self_training.py] => train dataset length: 2135
+Task 3, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.099, Train_accy 92.65, Test_accy 74.75: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:04<00:00, 12.88s/it]
+2024-01-24 17:23:44,706 [l2p_self_training.py] => Task 3, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.099, Train_accy 92.65, Test_accy 74.75
+2024-01-24 17:23:44,713 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:23:54,902 [l2p_self_training.py] => 2350 unlabeled samples will be pseudo labeled
+2024-01-24 17:23:54,902 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:23:54,903 [toolkit.py] => Pseudo Accuracy: 0.8204255319148936
+2024-01-24 17:23:54,913 [l2p_self_training.py] => train dataset length: 2600
+Task 3, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.026, Train_accy 91.23, Test_accy 74.15: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:15<00:00, 15.03s/it]
+2024-01-24 17:25:10,067 [l2p_self_training.py] => Task 3, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.026, Train_accy 91.23, Test_accy 74.15
+2024-01-24 17:25:10,072 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:25:20,377 [l2p_self_training.py] => 2245 unlabeled samples will be pseudo labeled
+2024-01-24 17:25:20,378 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:25:20,378 [toolkit.py] => Pseudo Accuracy: 0.7964365256124721
+2024-01-24 17:25:32,987 [trainer.py] => No NME accuracy.
+2024-01-24 17:25:32,987 [trainer.py] => CNN: {'total': 74.15, '00-09': 53.6, '10-19': 78.7, '20-29': 86.7, '30-39': 77.6, 'old': 73.0, 'new': 77.6}
+2024-01-24 17:25:32,988 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15]
+2024-01-24 17:25:32,988 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02]
+
+Average Accuracy (CNN): 80.2425
+2024-01-24 17:25:32,988 [trainer.py] => Average Accuracy (CNN): 80.2425 
+
+2024-01-24 17:25:32,991 [trainer.py] => All params: 171816392
+2024-01-24 17:25:32,994 [trainer.py] => Trainable params: 122980
+2024-01-24 17:25:32,994 [l2p_self_training.py] => Learning on 40-50
+2024-01-24 17:25:33,046 [l2p_self_training.py] => train dataset length: 250
+Task 4, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.125, Train_accy 93.20, Test_accy 69.48: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:25<00:00,  5.03s/it]
+2024-01-24 17:25:58,200 [l2p_self_training.py] => Task 4, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.125, Train_accy 93.20, Test_accy 69.48
+2024-01-24 17:25:58,206 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:26:09,339 [l2p_self_training.py] => 2113 unlabeled samples will be pseudo labeled
+2024-01-24 17:26:09,340 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:26:09,340 [toolkit.py] => Pseudo Accuracy: 0.8864174159962139
+2024-01-24 17:26:09,346 [l2p_self_training.py] => train dataset length: 2363
+Task 4, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.121, Train_accy 93.78, Test_accy 75.38: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:12<00:00, 14.52s/it]
+2024-01-24 17:27:21,949 [l2p_self_training.py] => Task 4, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.121, Train_accy 93.78, Test_accy 75.38
+2024-01-24 17:27:21,956 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:27:33,096 [l2p_self_training.py] => 2644 unlabeled samples will be pseudo labeled
+2024-01-24 17:27:33,097 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:27:33,098 [toolkit.py] => Pseudo Accuracy: 0.7946293494704992
+2024-01-24 17:27:33,105 [l2p_self_training.py] => train dataset length: 2894
+Task 4, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.050, Train_accy 91.85, Test_accy 69.44: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:25<00:00, 17.13s/it]
+2024-01-24 17:28:58,780 [l2p_self_training.py] => Task 4, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.050, Train_accy 91.85, Test_accy 69.44
+2024-01-24 17:28:58,787 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:29:10,041 [l2p_self_training.py] => 2643 unlabeled samples will be pseudo labeled
+2024-01-24 17:29:10,041 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:29:10,042 [toolkit.py] => Pseudo Accuracy: 0.7529322739311388
+2024-01-24 17:29:25,611 [trainer.py] => No NME accuracy.
+2024-01-24 17:29:25,612 [trainer.py] => CNN: {'total': 69.44, '00-09': 48.2, '10-19': 68.6, '20-29': 77.5, '30-39': 73.9, '40-49': 79.0, 'old': 67.05, 'new': 79.0}
+2024-01-24 17:29:25,612 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44]
+2024-01-24 17:29:25,612 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26]
+
+Average Accuracy (CNN): 78.08200000000001
+2024-01-24 17:29:25,613 [trainer.py] => Average Accuracy (CNN): 78.08200000000001 
+
+2024-01-24 17:29:25,616 [trainer.py] => All params: 171816392
+2024-01-24 17:29:25,619 [trainer.py] => Trainable params: 122980
+2024-01-24 17:29:25,619 [l2p_self_training.py] => Learning on 50-60
+2024-01-24 17:29:25,677 [l2p_self_training.py] => train dataset length: 250
+Task 5, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.076, Train_accy 89.60, Test_accy 66.85: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:27<00:00,  5.58s/it]
+2024-01-24 17:29:53,581 [l2p_self_training.py] => Task 5, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.076, Train_accy 89.60, Test_accy 66.85
+2024-01-24 17:29:53,587 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:30:05,296 [l2p_self_training.py] => 1955 unlabeled samples will be pseudo labeled
+2024-01-24 17:30:05,297 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:30:05,298 [toolkit.py] => Pseudo Accuracy: 0.8838874680306905
+2024-01-24 17:30:05,303 [l2p_self_training.py] => train dataset length: 2205
+Task 5, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.140, Train_accy 94.01, Test_accy 69.83: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:12<00:00, 14.51s/it]
+2024-01-24 17:31:17,865 [l2p_self_training.py] => Task 5, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.140, Train_accy 94.01, Test_accy 69.83
+2024-01-24 17:31:17,871 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:31:29,764 [l2p_self_training.py] => 2532 unlabeled samples will be pseudo labeled
+2024-01-24 17:31:29,765 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:31:29,766 [toolkit.py] => Pseudo Accuracy: 0.7571090047393365
+2024-01-24 17:31:29,773 [l2p_self_training.py] => train dataset length: 2782
+Task 5, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.038, Train_accy 91.12, Test_accy 67.72: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:26<00:00, 17.27s/it]
+2024-01-24 17:32:56,123 [l2p_self_training.py] => Task 5, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.038, Train_accy 91.12, Test_accy 67.72
+2024-01-24 17:32:56,129 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:33:07,932 [l2p_self_training.py] => 2529 unlabeled samples will be pseudo labeled
+2024-01-24 17:33:07,933 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:33:07,934 [toolkit.py] => Pseudo Accuracy: 0.730328192961645
+2024-01-24 17:33:26,472 [trainer.py] => No NME accuracy.
+2024-01-24 17:33:26,472 [trainer.py] => CNN: {'total': 67.72, '00-09': 40.4, '10-19': 68.3, '20-29': 67.1, '30-39': 71.6, '40-49': 75.5, '50-59': 83.4, 'old': 64.58, 'new': 83.4}
+2024-01-24 17:33:26,472 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44, 67.72]
+2024-01-24 17:33:26,472 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26, 94.62]
+
+Average Accuracy (CNN): 76.355
+2024-01-24 17:33:26,472 [trainer.py] => Average Accuracy (CNN): 76.355 
+
+2024-01-24 17:33:26,476 [trainer.py] => All params: 171816392
+2024-01-24 17:33:26,478 [trainer.py] => Trainable params: 122980
+2024-01-24 17:33:26,478 [l2p_self_training.py] => Learning on 60-70
+2024-01-24 17:33:26,538 [l2p_self_training.py] => train dataset length: 250
+Task 6, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.131, Train_accy 93.20, Test_accy 67.41: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:30<00:00,  6.03s/it]
+2024-01-24 17:33:56,675 [l2p_self_training.py] => Task 6, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.131, Train_accy 93.20, Test_accy 67.41
+2024-01-24 17:33:56,681 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:34:09,281 [l2p_self_training.py] => 2098 unlabeled samples will be pseudo labeled
+2024-01-24 17:34:09,281 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:34:09,282 [toolkit.py] => Pseudo Accuracy: 0.9223069590085796
+2024-01-24 17:34:09,288 [l2p_self_training.py] => train dataset length: 2348
+Task 6, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.152, Train_accy 94.72, Test_accy 69.13: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:18<00:00, 15.79s/it]
+2024-01-24 17:35:28,243 [l2p_self_training.py] => Task 6, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.152, Train_accy 94.72, Test_accy 69.13
+2024-01-24 17:35:28,249 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:35:40,761 [l2p_self_training.py] => 2793 unlabeled samples will be pseudo labeled
+2024-01-24 17:35:40,761 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:35:40,762 [toolkit.py] => Pseudo Accuracy: 0.7715717866093806
+2024-01-24 17:35:40,770 [l2p_self_training.py] => train dataset length: 3043
+Task 6, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.102, Train_accy 93.00, Test_accy 66.91: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:34<00:00, 18.96s/it]
+2024-01-24 17:37:15,577 [l2p_self_training.py] => Task 6, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.102, Train_accy 93.00, Test_accy 66.91
+2024-01-24 17:37:15,584 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:37:28,319 [l2p_self_training.py] => 2926 unlabeled samples will be pseudo labeled
+2024-01-24 17:37:28,319 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:37:28,319 [toolkit.py] => Pseudo Accuracy: 0.7259056732740943
+2024-01-24 17:37:50,006 [trainer.py] => No NME accuracy.
+2024-01-24 17:37:50,007 [trainer.py] => CNN: {'total': 66.91, '00-09': 29.9, '10-19': 65.6, '20-29': 68.0, '30-39': 68.6, '40-49': 73.6, '50-59': 71.0, '60-69': 91.7, 'old': 62.78, 'new': 91.7}
+2024-01-24 17:37:50,007 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44, 67.72, 66.91]
+2024-01-24 17:37:50,007 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26, 94.62, 94.29]
+
+Average Accuracy (CNN): 75.00571428571428
+2024-01-24 17:37:50,007 [trainer.py] => Average Accuracy (CNN): 75.00571428571428 
+
+2024-01-24 17:37:50,010 [trainer.py] => All params: 171816392
+2024-01-24 17:37:50,013 [trainer.py] => Trainable params: 122980
+2024-01-24 17:37:50,013 [l2p_self_training.py] => Learning on 70-80
+2024-01-24 17:37:50,089 [l2p_self_training.py] => train dataset length: 250
+Task 7, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.071, Train_accy 92.40, Test_accy 63.69: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:33<00:00,  6.71s/it]
+2024-01-24 17:38:23,658 [l2p_self_training.py] => Task 7, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.071, Train_accy 92.40, Test_accy 63.69
+2024-01-24 17:38:23,660 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:38:36,878 [l2p_self_training.py] => 1959 unlabeled samples will be pseudo labeled
+2024-01-24 17:38:36,878 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:38:36,879 [toolkit.py] => Pseudo Accuracy: 0.8249106687085248
+2024-01-24 17:38:36,885 [l2p_self_training.py] => train dataset length: 2209
+Task 7, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.172, Train_accy 95.20, Test_accy 65.60: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:18<00:00, 15.67s/it]
+2024-01-24 17:39:55,213 [l2p_self_training.py] => Task 7, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.172, Train_accy 95.20, Test_accy 65.60
+2024-01-24 17:39:55,220 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:40:08,595 [l2p_self_training.py] => 2845 unlabeled samples will be pseudo labeled
+2024-01-24 17:40:08,595 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:40:08,596 [toolkit.py] => Pseudo Accuracy: 0.680140597539543
+2024-01-24 17:40:08,605 [l2p_self_training.py] => train dataset length: 3095
+Task 7, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.060, Train_accy 91.76, Test_accy 62.65: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:39<00:00, 19.83s/it]
+2024-01-24 17:41:47,745 [l2p_self_training.py] => Task 7, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.060, Train_accy 91.76, Test_accy 62.65
+2024-01-24 17:41:47,752 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:42:00,927 [l2p_self_training.py] => 2849 unlabeled samples will be pseudo labeled
+2024-01-24 17:42:00,927 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:42:00,928 [toolkit.py] => Pseudo Accuracy: 0.6493506493506493
+2024-01-24 17:42:25,391 [trainer.py] => No NME accuracy.
+2024-01-24 17:42:25,392 [trainer.py] => CNN: {'total': 62.65, '00-09': 24.8, '10-19': 60.8, '20-29': 64.6, '30-39': 67.3, '40-49': 69.3, '50-59': 62.7, '60-69': 86.3, '70-79': 65.4, 'old': 62.26, 'new': 65.4}
+2024-01-24 17:42:25,392 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44, 67.72, 66.91, 62.65]
+2024-01-24 17:42:25,392 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26, 94.62, 94.29, 92.76]
+
+Average Accuracy (CNN): 73.46124999999999
+2024-01-24 17:42:25,392 [trainer.py] => Average Accuracy (CNN): 73.46124999999999 
+
+2024-01-24 17:42:25,395 [trainer.py] => All params: 171816392
+2024-01-24 17:42:25,397 [trainer.py] => Trainable params: 122980
+2024-01-24 17:42:25,398 [l2p_self_training.py] => Learning on 80-90
+2024-01-24 17:42:25,480 [l2p_self_training.py] => train dataset length: 250
+Task 8, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.080, Train_accy 91.60, Test_accy 59.66: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:36<00:00,  7.33s/it]
+2024-01-24 17:43:02,107 [l2p_self_training.py] => Task 8, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.080, Train_accy 91.60, Test_accy 59.66
+2024-01-24 17:43:02,114 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:43:16,094 [l2p_self_training.py] => 2160 unlabeled samples will be pseudo labeled
+2024-01-24 17:43:16,095 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:43:16,096 [toolkit.py] => Pseudo Accuracy: 0.8268518518518518
+2024-01-24 17:43:16,108 [l2p_self_training.py] => train dataset length: 2410
+Task 8, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.134, Train_accy 94.56, Test_accy 63.28: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:25<00:00, 17.11s/it]
+2024-01-24 17:44:41,681 [l2p_self_training.py] => Task 8, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.134, Train_accy 94.56, Test_accy 63.28
+2024-01-24 17:44:41,688 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:44:55,659 [l2p_self_training.py] => 3007 unlabeled samples will be pseudo labeled
+2024-01-24 17:44:55,660 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:44:55,661 [toolkit.py] => Pseudo Accuracy: 0.6677751912204856
+2024-01-24 17:44:55,670 [l2p_self_training.py] => train dataset length: 3257
+Task 8, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.097, Train_accy 93.28, Test_accy 59.29: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:45<00:00, 21.19s/it]
+2024-01-24 17:46:41,625 [l2p_self_training.py] => Task 8, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.097, Train_accy 93.28, Test_accy 59.29
+2024-01-24 17:46:41,632 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:46:55,706 [l2p_self_training.py] => 3195 unlabeled samples will be pseudo labeled
+2024-01-24 17:46:55,706 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:46:55,707 [toolkit.py] => Pseudo Accuracy: 0.6115805946791862
+2024-01-24 17:47:23,382 [trainer.py] => No NME accuracy.
+2024-01-24 17:47:23,382 [trainer.py] => CNN: {'total': 59.29, '00-09': 21.7, '10-19': 57.1, '20-29': 60.5, '30-39': 56.7, '40-49': 63.5, '50-59': 57.6, '60-69': 79.9, '70-79': 54.3, '80-89': 82.3, 'old': 56.41, 'new': 82.3}
+2024-01-24 17:47:23,383 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44, 67.72, 66.91, 62.65, 59.29]
+2024-01-24 17:47:23,383 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26, 94.62, 94.29, 92.76, 91.22]
+
+Average Accuracy (CNN): 71.88666666666666
+2024-01-24 17:47:23,383 [trainer.py] => Average Accuracy (CNN): 71.88666666666666 
+
+2024-01-24 17:47:23,386 [trainer.py] => All params: 171816392
+2024-01-24 17:47:23,388 [trainer.py] => Trainable params: 122980
+2024-01-24 17:47:23,389 [l2p_self_training.py] => Learning on 90-100
+2024-01-24 17:47:23,472 [l2p_self_training.py] => train dataset length: 250
+Task 9, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.082, Train_accy 91.20, Test_accy 57.56: 100%|███████████████████████████████████████████████████████████████████| 5/5 [00:39<00:00,  7.92s/it]
+2024-01-24 17:48:03,056 [l2p_self_training.py] => Task 9, Epoch 5/5, Self_training_Iteration: 0 => Loss -0.082, Train_accy 91.20, Test_accy 57.56
+2024-01-24 17:48:03,062 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:48:17,702 [l2p_self_training.py] => 2073 unlabeled samples will be pseudo labeled
+2024-01-24 17:48:17,703 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:48:17,703 [toolkit.py] => Pseudo Accuracy: 0.8470815243608297
+2024-01-24 17:48:17,712 [l2p_self_training.py] => train dataset length: 2323
+Task 9, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.147, Train_accy 94.53, Test_accy 60.91: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:26<00:00, 17.33s/it]
+2024-01-24 17:49:44,339 [l2p_self_training.py] => Task 9, Epoch 5/5, Self_training_Iteration: 1 => Loss -0.147, Train_accy 94.53, Test_accy 60.91
+2024-01-24 17:49:44,345 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:49:59,123 [l2p_self_training.py] => 2872 unlabeled samples will be pseudo labeled
+2024-01-24 17:49:59,123 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:49:59,124 [toolkit.py] => Pseudo Accuracy: 0.6974233983286908
+2024-01-24 17:49:59,138 [l2p_self_training.py] => train dataset length: 3122
+Task 9, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.083, Train_accy 92.31, Test_accy 60.09: 100%|███████████████████████████████████████████████████████████████████| 5/5 [01:45<00:00, 21.05s/it]
+2024-01-24 17:51:44,404 [l2p_self_training.py] => Task 9, Epoch 5/5, Self_training_Iteration: 2 => Loss -0.083, Train_accy 92.31, Test_accy 60.09
+2024-01-24 17:51:44,407 [l2p_self_training.py] => pseudo labeling start
+2024-01-24 17:51:59,191 [l2p_self_training.py] => 3143 unlabeled samples will be pseudo labeled
+2024-01-24 17:51:59,191 [l2p_self_training.py] => pseudo labeling finish
+2024-01-24 17:51:59,192 [toolkit.py] => Pseudo Accuracy: 0.6360165447025136
+2024-01-24 17:52:29,776 [trainer.py] => No NME accuracy.
+2024-01-24 17:52:29,776 [trainer.py] => CNN: {'total': 60.09, '00-09': 20.9, '10-19': 54.9, '20-29': 60.7, '30-39': 53.9, '40-49': 61.2, '50-59': 55.0, '60-69': 78.3, '70-79': 52.7, '80-89': 80.9, '90-99': 82.4, 'old': 57.61, 'new': 82.4}
+2024-01-24 17:52:29,776 [trainer.py] => CNN top1 curve: [90.7, 79.45, 76.67, 74.15, 69.44, 67.72, 66.91, 62.65, 59.29, 60.09]
+2024-01-24 17:52:29,776 [trainer.py] => CNN top5 curve: [99.2, 97.95, 97.53, 96.02, 95.26, 94.62, 94.29, 92.76, 91.22, 91.0]
+
+Average Accuracy (CNN): 70.707
+2024-01-24 17:52:29,777 [trainer.py] => Average Accuracy (CNN): 70.707 
