@@ -48,8 +48,6 @@ print(data.iloc[0])  # 可以打印出来看看
 acc0 = data.iloc[0]
 acc1 = data.iloc[1]
 acc2 = data.iloc[2]
-acc3 = data.iloc[3]
-
 # 数据已经一股脑读到data中了，下面要开始处理
 # 首先处理年份
 
@@ -61,7 +59,7 @@ acc3 = data.iloc[3]
 # all_xiaoliang = [1607,2301,2175,1466,1889,1588,2790,2014,1476,1538,2175,1897,2096,1254,1808,1210,1820,1245,1453,1968,1333]
 
 # 下面开始画图
-plt.figure(1, figsize=(10, 5), facecolor='w',
+plt.figure(1, figsize=(7, 5), facecolor='w',
            edgecolor='w', dpi=100, frameon=True)
 # 画图的第一件事，就是用figure设置画布，后续画图就是在这块画布上涂涂抹抹
 # figure的参数大概如下
@@ -86,7 +84,7 @@ plt.rcParams["axes.linewidth"] = 1  # 默认线宽0.8，我们可以改粗一点
 # 下面包括设置网格线等等，其实也可以利用类似方法修改，只是太不方便，也记不住
 
 plt.grid(which="both", linestyle=":", linewidth=1, color='y', alpha=1)
-plt.title("l2p cifar100 SSCL")
+plt.title("l2p self-training oot")
 # 设置网格线
 # grid(b=None, which='major', axis='both', **kwargs）
 # visible可选参数，布尔值；缩写为b。是否显示网格线，若设置了网格线的关键字参数，则表明要设置网格线且可见；若设置visible=None且没有设置关键字参数， 则网格线不可见
@@ -115,7 +113,7 @@ plt.xticks(fontsize=12)
 # **kwargs:此参数是文本属性，用于控制标签的外观，和xlabel类似，不多说了
 
 plt.xticks(color="y")  # 设x轴文字颜色为黄色
-plt.xticks(range(0, 11))  # 设置X轴显示哪些值，分开设好读
+plt.xticks(range(1, 11))  # 设置X轴显示哪些值，分开设好读
 plt.xlim([0, 11])  # 设置x轴从2000开始到2020结束
 
 # xlim(*args, **kwargs)
@@ -127,7 +125,7 @@ plt.xlim([0, 11])  # 设置x轴从2000开始到2020结束
 
 # 下面设置y轴，同样套路
 plt.ylabel("acc@1", fontsize=18)
-plt.yticks(fontsize=10)
+plt.yticks(fontsize=12)
 plt.yticks(range(0, 110, 10))  # 其实许多时候可以先看看默认的情况，不合适再改
 plt.ylim([0, 100])  # 设置y轴从0显示到2400
 # plt.yscale('log') 设置y轴为对数坐标，有时有用，但本例用不到，因此注掉
@@ -150,13 +148,11 @@ plt.ylim([0, 100])  # 设置y轴从0显示到2400
 # 以年份为x坐标，总销量为y坐标，画线， 线型为实线 颜色为红色 点型为上三角 线宽和点大小为默认
 plt.plot(range(1, 11), acc0, 'r-^')
 plt.plot(range(1, 11), acc1, 'b-v')
-plt.plot(range(1, 11), acc2, 'y-h')
-plt.plot(range(1, 11), acc3, 'g-*')
-
+plt.plot(range(1, 11), acc2, 'g-x')
 
 # 下面设置图例
-plt.legend(["100% labeled", "25% labeled", "5% labeled", "1% labeled"],
-           fontsize=14, bbox_to_anchor=(0.5, 0.25), prop={'size': 10}, ncol=2)
+plt.legend(["previous oot data", "future oot data", "no oot data"],
+           fontsize=14, bbox_to_anchor=(0.5, 0.5), prop={'size': 13}, ncol=1)
 # 参数同样有一大堆，只写了几个最常用的，方便修改看效果
 # 第一个参数就是字符串列表，不解释了
 # fontsize 是文字自豪
@@ -166,6 +162,6 @@ plt.legend(["100% labeled", "25% labeled", "5% labeled", "1% labeled"],
 # 其实这些参数默认值都还可以，一般情况下没必要调
 
 # 画的差不多了，最后保存一张png图出来
-plt.savefig("result.png")
+plt.show()
 
 # 代码没多少，注释写到手软，就冲这还不给点解赞吗
