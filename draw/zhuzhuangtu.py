@@ -54,7 +54,7 @@ plt.yticks(range(0, 1501, 150))  # 其实许多时候可以先看看默认的情
 plt.ylim([0, 1500])  # 设置y轴从0显示到2400
 
 # 画柱状图
-plt.bar(x, a, width=width, label="previous label on future samples count")
+plt.bar(x, a, width=width, label="previous label on future sample count")
 plt.bar(x + width, b, width=width, label="it label on future sample count")
 plt.bar(x + width * 2, c, width=width, label="previous label on it sample count")
 # 显示图例
